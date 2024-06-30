@@ -7,7 +7,7 @@ chunk as (
     select
         *,
         -- need to use the index of the record for trading days - can't use date diffs bc of non-trading days
-        row_number() over (order by report_date desc) as date_index
+        row_number() over (order by report_date) as date_index
     from {{ ref('stg_gme') }}
 )
 

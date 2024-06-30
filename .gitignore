@@ -6,3 +6,5 @@ logs/
 .env
 
 inc_data_repo/
+gsheetsconfig.json
+sheets.googleapis.com-python.json
