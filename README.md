@@ -1,15 +1,5 @@
-Welcome to your new dbt project!
+### This Repo Will Hold Multiple DBT Projects to Extract, Transform and Load Data
 
-### Using the starter project
-
-Try running the following commands:
-- dbt run
-- dbt test
+The first project is building a pipeline to pull daily stock data, use a transformation pipeline to calculate different metrics over time, and then load them to a google sheets report that can be found here[https://docs.google.com/spreadsheets/d/1hoWafJ0FAs0cpZ2r0ZVT4dmmg6DIXbWjByFNuA9FxQ4/edit?gid=1643467238#gid=1643467238].
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
