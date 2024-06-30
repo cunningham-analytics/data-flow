@@ -4,7 +4,10 @@ with
 
 chunk as (
 
-    select *
+    select
+        *,
+        -- need to use the index of the record for trading days - can't use date diffs bc of non-trading days
+        row_number() over (order by report_date desc) as date_index
     from {{ ref('stg_gme') }}
 )
 
@@ -18,9 +21,9 @@ select
 from
     chunk curr
 left join chunk lag1
-    on lag1.report_date = curr.report_date - INTERVAL '1 day'
+    on lag1.date_index = curr.date_index - 1
 left join chunk prev20
-    on prev20.report_date between curr.report_date - INTERVAL '21 day' and curr.report_date - INTERVAL '1 day'
+    on prev20.date_index between curr.date_index - 21 and curr.date_index - 1
 left join chunk prev50
-    on prev50.report_date between curr.report_date - INTERVAL '51 day' and curr.report_date - INTERVAL '1 day'
+    on prev50.date_index between curr.date_index - 51 and curr.date_index - 1
 group by 1, 2, 3, 4
