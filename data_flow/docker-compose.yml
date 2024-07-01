@@ -26,5 +26,10 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     restart: unless-stopped
 
+  web:
+    build: .
+    ports:
+      - "8080:5000"
+
 volumes:
   postgres-data:
