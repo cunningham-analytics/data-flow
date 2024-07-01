@@ -6,17 +6,20 @@ import psycopg2
 import os
 import csv
 import pandas as pd
+import logging
 
 def run_data_extractor():
+
+    ticker = "GME"
+    logging.info(f"Beginning data extraction for {ticker}")
     dbUser = 'admin' # os.environ["POSTGRES_USER"]
     dbPW = 'root' # os.environ["POSTGRES_PW"]
 
     connStr = f"host=localhost dbname=analytics user={dbUser} password={dbPW}"
     conn = psycopg2.connect(connStr)
 
-    dateRange = timedelta(days=180)
+    dateRange = timedelta(days=500)
 
-    ticker = "GME"
     endDate = date.today()
     startDate = endDate - dateRange
     stockInfo = yahooFinance.Ticker(ticker)
@@ -38,6 +41,7 @@ def run_data_extractor():
 
     cur = conn.cursor()
 
+    logging.info(f'Creating raw_store table {fileName}')
     cur.execute(f"drop table if exists raw_store.{fileName}")
     conn.commit()
 
@@ -64,6 +68,7 @@ def run_data_extractor():
     conn.commit()
 
 
+    logging.info(f'Starting updating raw_store table raw_{ticker}')
     cur.execute(
         f"""
         create table if not exists raw_store.raw_{ticker} (
@@ -98,3 +103,7 @@ def run_data_extractor():
     )
 
     conn.commit()
+
+    logging.info(f'Completed updating raw_store table raw_{ticker}')
+
+    return None

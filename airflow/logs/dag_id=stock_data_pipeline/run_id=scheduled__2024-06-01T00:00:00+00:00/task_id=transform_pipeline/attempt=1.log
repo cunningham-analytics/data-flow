@@ -1,0 +1,52 @@
+[2024-07-01T11:09:47.180-0400] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-01T11:09:47.196-0400] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: stock_data_pipeline.transform_pipeline scheduled__2024-06-01T00:00:00+00:00 [queued]>
+[2024-07-01T11:09:47.200-0400] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: stock_data_pipeline.transform_pipeline scheduled__2024-06-01T00:00:00+00:00 [queued]>
+[2024-07-01T11:09:47.201-0400] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-07-01T11:09:47.211-0400] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): transform_pipeline> on 2024-06-01 00:00:00+00:00
+[2024-07-01T11:09:47.223-0400] {logging_mixin.py:188} WARNING - /Users/christophercunningham/airflow_workspace/data-flow/data_flow_env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=24530) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-07-01T11:09:47.224-0400] {standard_task_runner.py:63} INFO - Started process 24538 to run task
+[2024-07-01T11:09:47.223-0400] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'stock_data_pipeline', 'transform_pipeline', 'scheduled__2024-06-01T00:00:00+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/af-dag__run_stock_data_pipeline.py', '--cfg-path', '/var/folders/d3/l1h2w3dj6m9cnl162jqdffzm0000gn/T/tmp5_cnmudn']
+[2024-07-01T11:09:47.225-0400] {standard_task_runner.py:91} INFO - Job 26: Subtask transform_pipeline
+[2024-07-01T11:09:47.269-0400] {task_command.py:426} INFO - Running <TaskInstance: stock_data_pipeline.transform_pipeline scheduled__2024-06-01T00:00:00+00:00 [running]> on host christophersmbp.lan
+[2024-07-01T11:09:47.316-0400] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='stock_data_pipeline' AIRFLOW_CTX_TASK_ID='transform_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2024-06-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-01T00:00:00+00:00'
+[2024-07-01T11:09:47.318-0400] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-01T11:09:47.320-0400] {subprocess.py:63} INFO - Tmp dir root location: /var/folders/d3/l1h2w3dj6m9cnl162jqdffzm0000gn/T
+[2024-07-01T11:09:47.321-0400] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', "\n export DATA_INTERVAL_START='2024-06-01 00:00:00+00:00'\n export DATA_INTERVAL_END='2024-06-02 00:00:00+00:00'\n export DBT_PROJECT_PATH=\n dbt clean --project-dir /Users/christophercunningham/airflow_workspace/data-flow/stocks\n dbt deps /Users/christophercunningham/airflow_workspace/data-flow/stocks\n dbt build -s +int_gme__closing_calculations /Users/christophercunningham/airflow_workspace/data-flow/stocks\n "]
+[2024-07-01T11:09:47.327-0400] {subprocess.py:86} INFO - Output:
+[2024-07-01T11:09:49.306-0400] {subprocess.py:93} INFO - [0m15:09:49  Running with dbt=1.8.3
+[2024-07-01T11:09:49.470-0400] {subprocess.py:93} INFO - [0m15:09:49  Checking /Users/christophercunningham/airflow_workspace/data-flow/stocks/dbt_packages/*
+[2024-07-01T11:09:49.471-0400] {subprocess.py:93} INFO - [0m15:09:49  Cleaned /Users/christophercunningham/airflow_workspace/data-flow/stocks/dbt_packages/*
+[2024-07-01T11:09:49.471-0400] {subprocess.py:93} INFO - [0m15:09:49  Checking /Users/christophercunningham/airflow_workspace/data-flow/stocks/target/*
+[2024-07-01T11:09:49.485-0400] {subprocess.py:93} INFO - [0m15:09:49  Cleaned /Users/christophercunningham/airflow_workspace/data-flow/stocks/target/*
+[2024-07-01T11:09:49.486-0400] {subprocess.py:93} INFO - [0m15:09:49  Finished cleaning all paths.
+[2024-07-01T11:09:51.638-0400] {subprocess.py:93} INFO - Usage: dbt deps [OPTIONS]
+[2024-07-01T11:09:51.639-0400] {subprocess.py:93} INFO - Try 'dbt deps -h' for help.
+[2024-07-01T11:09:51.640-0400] {subprocess.py:93} INFO - 
+[2024-07-01T11:09:51.640-0400] {subprocess.py:93} INFO - Error: Got unexpected extra argument (/Users/christophercunningham/airflow_workspace/data-flow/stocks)
+[2024-07-01T11:09:53.561-0400] {subprocess.py:93} INFO - [0m15:09:53  Running with dbt=1.8.3
+[2024-07-01T11:09:53.562-0400] {subprocess.py:93} INFO - [0m15:09:53  Encountered an error:
+[2024-07-01T11:09:53.563-0400] {subprocess.py:93} INFO - Runtime Error
+[2024-07-01T11:09:53.563-0400] {subprocess.py:93} INFO -   No dbt_project.yml found at expected path /private/var/folders/d3/l1h2w3dj6m9cnl162jqdffzm0000gn/T/airflowtmp8n9ip_l1/dbt_project.yml
+[2024-07-01T11:09:53.564-0400] {subprocess.py:93} INFO -   Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+[2024-07-01T11:09:53.564-0400] {subprocess.py:93} INFO - 
+[2024-07-01T11:09:53.986-0400] {subprocess.py:97} INFO - Command exited with return code 2
+[2024-07-01T11:09:53.987-0400] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-01T11:09:53.995-0400] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Users/christophercunningham/airflow_workspace/data-flow/data_flow_env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/christophercunningham/airflow_workspace/data-flow/data_flow_env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/christophercunningham/airflow_workspace/data-flow/data_flow_env/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/christophercunningham/airflow_workspace/data-flow/data_flow_env/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2024-07-01T11:09:54.001-0400] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=stock_data_pipeline, task_id=transform_pipeline, run_id=scheduled__2024-06-01T00:00:00+00:00, execution_date=20240601T000000, start_date=20240701T150947, end_date=20240701T150954
+[2024-07-01T11:09:54.012-0400] {standard_task_runner.py:110} ERROR - Failed to execute job 26 for task transform_pipeline (Bash command failed. The command returned a non-zero exit code 2.; 24538)
+[2024-07-01T11:09:54.048-0400] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-01T11:09:54.063-0400] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-01T11:09:54.066-0400] {local_task_job_runner.py:222} INFO - ::endgroup::

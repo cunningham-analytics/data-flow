@@ -1,0 +1,21 @@
+[2024-07-01T10:55:25.821-0400] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-01T10:55:25.839-0400] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: stock_data_pipeline.extract_stock_data scheduled__2024-06-03T00:00:00+00:00 [queued]>
+[2024-07-01T10:55:25.844-0400] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: stock_data_pipeline.extract_stock_data scheduled__2024-06-03T00:00:00+00:00 [queued]>
+[2024-07-01T10:55:25.844-0400] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-01T10:55:25.854-0400] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract_stock_data> on 2024-06-03 00:00:00+00:00
+[2024-07-01T10:55:25.868-0400] {logging_mixin.py:188} WARNING - /Users/christophercunningham/airflow_workspace/data-flow/data_flow_env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=22662) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-07-01T10:55:25.869-0400] {standard_task_runner.py:63} INFO - Started process 22673 to run task
+[2024-07-01T10:55:25.867-0400] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'stock_data_pipeline', 'extract_stock_data', 'scheduled__2024-06-03T00:00:00+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/af-dag__run_stock_data_pipeline.py', '--cfg-path', '/var/folders/d3/l1h2w3dj6m9cnl162jqdffzm0000gn/T/tmprlgnnh20']
+[2024-07-01T10:55:25.870-0400] {standard_task_runner.py:91} INFO - Job 21: Subtask extract_stock_data
+[2024-07-01T10:55:25.916-0400] {task_command.py:426} INFO - Running <TaskInstance: stock_data_pipeline.extract_stock_data scheduled__2024-06-03T00:00:00+00:00 [running]> on host christophersmbp.lan
+[2024-07-01T10:55:25.969-0400] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ccunningham' AIRFLOW_CTX_DAG_ID='stock_data_pipeline' AIRFLOW_CTX_TASK_ID='extract_stock_data' AIRFLOW_CTX_EXECUTION_DATE='2024-06-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-03T00:00:00+00:00'
+[2024-07-01T10:55:25.971-0400] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-01T10:55:25.972-0400] {data_extractor.py:14} INFO - Beginning data extraction for GME
+[2024-07-01T10:58:11.764-0400] {local_task_job_runner.py:310} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-07-01T10:58:11.767-0400] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-01T10:58:11.792-0400] {process_utils.py:132} INFO - Sending 15 to group 22673. PIDs of all processes in the group: [22673]
+[2024-07-01T10:58:11.793-0400] {process_utils.py:87} INFO - Sending the signal 15 to group 22673
+[2024-07-01T10:59:11.806-0400] {process_utils.py:150} WARNING - process psutil.Process(pid=22673, name='Python', status='running', started='10:55:25') did not respond to SIGTERM. Trying SIGKILL
+[2024-07-01T10:59:11.813-0400] {process_utils.py:87} INFO - Sending the signal 9 to group 22673
+[2024-07-01T10:59:11.818-0400] {process_utils.py:80} INFO - Process psutil.Process(pid=22673, name='Python', status='terminated', exitcode=<Negsignal.SIGKILL: -9>, started='10:55:25') (22673) terminated with exit code -9
+[2024-07-01T10:59:11.819-0400] {standard_task_runner.py:178} ERROR - Job 21 was killed before it finished (likely due to running out of memory)
