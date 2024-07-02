@@ -12,3 +12,4 @@ sheets.googleapis.com-python.json
 airflow/dags/__pycache__/
 airflow/dags/scripts/__pycache__/
 airflow/airflow.db
+airflow/standalone_admin_password.txt
