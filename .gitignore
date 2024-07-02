@@ -8,3 +8,7 @@ logs/
 inc_data_repo/
 gsheetsconfig.json
 sheets.googleapis.com-python.json
+**/airflow/logs/
+airflow/dags/__pycache__/
+airflow/dags/scripts/__pycache__/
+airflow/airflow.db

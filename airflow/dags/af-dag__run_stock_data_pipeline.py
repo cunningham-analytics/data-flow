@@ -8,6 +8,7 @@ from scripts.data_extractor import run_data_extractor
 from scripts.gsheets_loader import run_gsheets_loader
 
 import logging
+logging.basicConfig(level=logging.INFO)
 
 #Define default arguments
 default_args = {
