@@ -33,8 +33,10 @@ models:
   stocks:
     # Config indicated by + and applies to all files under models/example/
     staging:
-      +materialized: table
+      +materialized: incremental
+      +incremental_strategy: append
       +schema: staging
+      +pre_hook: '{{ drop_overlapping_data(date_field="report_date") }}'
     intermediate:
       +materialized: table
       +schema: staging
