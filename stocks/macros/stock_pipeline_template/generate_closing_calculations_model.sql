@@ -1,6 +1,6 @@
 {% macro generate_closing_calculations_model(ticker) %}
 
-{% set mdl = 'stg_'ticker %}
+{% set mdl = 'stg_' ~ ticker %}
 with
 
 chunk as (
@@ -9,7 +9,7 @@ chunk as (
         *,
         -- need to use the index of the record for trading days - can't use date diffs bc of non-trading days
         row_number() over (order by report_date) as date_index
-    from {{ ref(model) }}
+    from {{ ref(mdl) }}
 )
 
 select

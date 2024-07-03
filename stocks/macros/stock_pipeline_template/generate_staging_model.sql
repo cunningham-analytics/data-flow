@@ -1,6 +1,6 @@
 {% macro generate_staging_model(ticker) %}
 
-{% set src_tbl = 'raw_'ticker %}
+{% set src_tbl = 'raw_' ~ ticker %}
 
 select
     cast(date as date) as report_date,
