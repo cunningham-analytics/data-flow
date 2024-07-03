@@ -10,7 +10,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-tickers = ["GME", "AAPL", "MSFT", "FFIE", "GOOGL"] 
+tickers = ["GME", "AAPL", "MSFT", "FFIE", "GOOGL", "AMZN", "META"] 
 
 def load_stock_to_db(ticker, conn, startDate, endDate):
 
@@ -109,8 +109,8 @@ def run_data_extractor(tickers):
     endDate = date.today()
     startDate = endDate - dateRange
 
-    dbUser = 'admin' # os.environ["POSTGRES_USER"]
-    dbPW = 'root' # os.environ["POSTGRES_PW"]
+    dbUser = os.environ["POSTGRES_USER"]
+    dbPW = os.environ["POSTGRES_PW"]
     connStr = f"host=localhost dbname=analytics user={dbUser} password={dbPW}"
     conn = psycopg2.connect(connStr)
 
