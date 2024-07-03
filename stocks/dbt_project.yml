@@ -36,7 +36,6 @@ models:
       +materialized: incremental
       +incremental_strategy: append
       +schema: staging
-      +pre_hook: '{{ drop_overlapping_data(date_field="report_date") }}'
     intermediate:
       +materialized: table
       +schema: staging

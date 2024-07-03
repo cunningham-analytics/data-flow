@@ -5,3 +5,9 @@ sources:
     schema: raw_store  
     tables:
       - name: raw_gme
+      - name: raw_amzn
+      - name: raw_ffie
+      - name: raw_aapl
+      - name: raw_msft
+      - name: raw_googl
+      - name: raw_meta
